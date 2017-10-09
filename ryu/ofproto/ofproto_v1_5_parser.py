@@ -361,7 +361,7 @@ class OFPEchoReply(MsgBase):
         assert self.data is not None
         self.buf += self.data
 
-
+@_register_parser
 @_set_msg_type(ofproto.OFPT_FEATURES_REQUEST)
 class OFPFeaturesRequest(MsgBase):
     """

@@ -146,6 +146,9 @@ class OpenFlowController(object):
             addr = tuple(_split_addr(address))
             self.spawn_client_loop(addr)
 
+        # Don't spawn a server loop is Ryu has been run as a client
+        if self._clients != {}:
+            return
         self.server_loop(self.ofp_tcp_listen_port,
                          self.ofp_ssl_listen_port)
 
